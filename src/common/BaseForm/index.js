@@ -1,6 +1,8 @@
 import React from 'react'
 import { getOptionsList } from '../../utils'
-import { Input, Select, Form, Button, DatePicker } from 'antd'
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Select, Button, DatePicker } from 'antd';
 const FormItem = Form.Item
 
 class FilterForm extends React.Component{

@@ -4,7 +4,8 @@ import './index.less'
 import NotFound from '../NotFound'
 import connect from '../../utils/connect'
 import { getMenuItem, getBreadItem, filterRoutes } from '../../utils'
-import { Layout, Menu, Breadcrumb,Icon } from 'antd'
+import { PoweroffOutlined } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb } from 'antd';
 import { recursionRouterTwo } from '../../utils/recursion-router'
 const { Header, Content, Footer, Sider } = Layout
 
@@ -79,7 +80,7 @@ class User extends React.Component {
                     <Header style={{ background: '#fff', padding: 0 }}>
                         {/* <img src={avatar} alt=""/> */}
                         <span className="logoutIcon" onClick={this.logOut}>
-                            <Icon type="poweroff" />
+                            <PoweroffOutlined />
                         </span>
                         <span className="loginUser">{name}</span>
                     </Header>
@@ -107,10 +108,9 @@ class User extends React.Component {
                         </Switch>
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2019</Footer>
                 </Layout>
             </Layout>
-        )
+        );
     }
 }
 

@@ -1,5 +1,6 @@
 import React from "react"
-import { Menu, Icon, Breadcrumb,Select } from "antd"
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Menu, Breadcrumb, Select } from "antd";
 import { Link } from "react-router-dom"
 import request from './request'
 
@@ -16,25 +17,25 @@ export const getMenuItem = list => {
                     key={item.path}
                     title={
                         <span>
-                            <Icon type={item.icon} />
+                            <LegacyIcon type={item.icon} />
                             <span>{item.name}</span>
                         </span>
                     }
                 >
                     {getMenuItem(item.children)}
                 </SubMenu>
-            )
+            );
         } else {
             return (
                 <MenuItem key={item.path}>
                     <Link to={item.path}>
-                        <Icon type={item.icon} />
+                        <LegacyIcon type={item.icon} />
                         <span>{item.name}</span>
                     </Link>
                 </MenuItem>
-            )
+            );
         }
-    })
+    });
 }
 
 //获取面包屑Item

@@ -1,5 +1,7 @@
 import React from "react";
-import {Card, Transfer, Button, Modal, Form,Input,Select,Tree } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Card, Transfer, Button, Modal, Input, Select, Tree } from "antd";
 import BaseForm from '../../../../common/BaseForm'
 import Etable from "../../../../common/Etable";
 import { formateDate, updateSelectedItem, getList } from '../../../../utils'

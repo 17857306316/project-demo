@@ -1,4 +1,7 @@
-import { Form, Icon, Input, Button } from 'antd'
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Button } from 'antd';
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import connect from '../../utils/connect'
@@ -42,7 +45,7 @@ class NormalLoginForm extends React.Component {
                             rules: [{ required: true, message: 'Please input your username!' }],
                         })(
                             <Input
-                                prefix={<Icon type="user" />}
+                                prefix={<UserOutlined />}
                                 placeholder="username"
                             />,
                         )}
@@ -52,7 +55,7 @@ class NormalLoginForm extends React.Component {
                             rules: [{ required: true, message: 'Please input your Password!' }],
                         })(
                             <Input
-                                prefix={<Icon type="lock" />}
+                                prefix={<LockOutlined />}
                                 type="password"
                                 placeholder="password"
                             />,
