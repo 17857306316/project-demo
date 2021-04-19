@@ -4,7 +4,7 @@ import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 import { Input, Select, Button, DatePicker } from 'antd';
 const FormItem = Form.Item
-
+//查询组件
 class FilterForm extends React.Component{
     creatFormList = () =>{
         //用于双向数据绑定

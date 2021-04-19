@@ -1,8 +1,9 @@
+//菜单列表
 const menuList = [
-    // {
-    //     title: '首页',
-    //     key: '/home'
-    // },
+    {
+        title: '首页',
+        key: '/home'
+    },
     {
         title: '订单管理',
         key: '/user/order',

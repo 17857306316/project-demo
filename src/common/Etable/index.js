@@ -1,5 +1,7 @@
 import React from 'react'
 import { Table } from 'antd'
+
+//table组件分页以及多选等
 class Etable extends React.Component {
 
     onSelectChange = (selectedRowKeys,selectedRows)=> {

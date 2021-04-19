@@ -42,7 +42,7 @@ class NormalLoginForm extends React.Component {
                     <div className="login-title">后台管理系统</div>
                     <Form.Item>
                         {getFieldDecorator('username', {
-                            rules: [{ required: true, message: 'Please input your username!' }],
+                            rules: [{ required: true, message: '请输入你的用户名' }],
                         })(
                             <Input
                                 prefix={<UserOutlined />}
@@ -52,7 +52,7 @@ class NormalLoginForm extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('password', {
-                            rules: [{ required: true, message: 'Please input your Password!' }],
+                            rules: [{ required: true, message: '请输入你的密码' }],
                         })(
                             <Input
                                 prefix={<LockOutlined />}

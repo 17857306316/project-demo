@@ -52,17 +52,13 @@ export const permissionAction = (path) =>{
             const allList = routes[2].children
             res.data.data.push('index')//把首页丢进去
             const permissionList = recursionRouter(res.data.data,allList)
-            
             const defaultOpenKeys = filterRoutes(path)
             const currentList = recursionRouterThree(defaultOpenKeys,permissionList)
             const action = doAuthChangeAction.permissionChange(permissionList,currentList,res.data.avatar,res.data.name)
             dispatch(action)
-
-            
         })
     }
 }
-
 export const currentAction = (list) =>{
     return (dispatch) =>{
             const action = doAuthChangeAction.currentChange(list)

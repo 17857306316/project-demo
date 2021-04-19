@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
+//重定向
 const renderRoutes = (routes, authed, authPath = '/login', extraProps = {}, switchProps = {}) => routes ? (
 	<Switch {...switchProps}>
 		{routes.map((route, i) => (
