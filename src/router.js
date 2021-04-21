@@ -54,8 +54,15 @@ const routes = [
                         path: '/user/order/list',
                         pathName: 'order-list',
                         component: OrderList,
-                        name: '订单列表',
+                        name: '销售单列表',
                         icon: 'table'
+                    },
+                    {
+                        path: '/user/order/returnGoods',
+                        pathName: 'return-goods',
+                        component: ReturnGoods,
+                        name: '采购单管理',
+                        icon: 'eye'
                     },
                     {
                         path: '/user/order/product',
@@ -80,13 +87,7 @@ const routes = [
                             }
                         ]
                     },
-                    {
-                        path: '/user/order/returnGoods',
-                        pathName: 'return-goods',
-                        component: ReturnGoods,
-                        name: '退货管理',
-                        icon: 'eye'
-                    }
+
                 ]
             },
             {

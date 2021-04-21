@@ -1,5 +1,5 @@
 import React,{ Fragment } from 'react'
-import { Card,Button,Modal,message } from 'antd'
+import { Card,Button,Modal,message,Space } from 'antd'
 import FormCollection from '../../../../common/BaseForm'
 import Etable from '../../../../common/Etable'
 import { updateSelectedItem, getList } from '../../../../utils'
@@ -14,35 +14,36 @@ class FormList extends React.Component{
         {
             type:'input',
             initialValue:'',
-            label:'用户名',
-            placeholder:'请输入用户名',
+            label:'货品编码',
+            placeholder:'请输入货品编码',
             field:'username',
             width:'120px'
         },
         {
             type:'input',
             initialValue:'',
-            label:'密码',
-            placeholder:'请输入用密码',
+            label:'货品名称',
+            placeholder:'请输入货品名称',
             field:'password',
             width:'120px'
         },
         {
             type:'select',
             initialValue:'',
-            label:'网名',
+            label:'订单状态',
             field:'siteName',
             width:'100px',
-            list:[{id:0,label:'全部',value:''},{id:1,label:'randy',value:'1'},{id:2,label:'peter',value:'2'},{id:3,label:'hui',value:'3'}]
+            list:[{id:0,label:'全部',value:''},{id:1,label:'已发货',value:'1'},{id:2,label:'待发货',value:'2'},{id:3,label:'待审核',value:'3'}]
         },
         {
             type:'chooseTime',
             label:'订单时间'
         }
     ]
+   
 
     state = {
-        dataSource:[],
+        pagination:true,
         rowSelection:{
             selectedRowKeys:[],
             selectedRows:[]
@@ -52,61 +53,62 @@ class FormList extends React.Component{
     componentDidMount(){
         this.requestList()
     }
-    requestList = () =>{
-        const options = {
-            url: '/initial/list',
-            method: 'get',
-            params:{
-                page:this.params.page,
-                pageSize:this.params.pageSize
-            },
-            data:{}
-        }
-        getList(this,options)
-    }
+
+ 
+   
     handleSearch = (data)=>{
         console.log(this)
     }
     handleDelete = (item,e)=>{
+        console.log(e);
         e.stopPropagation()//阻止冒泡
         Modal.confirm({
             title:'确认',
-            content:'您确认要删除此条数据吗？',
+            content:'您确认要编辑此条数据吗？',
             onOk:()=>{
-                message.success('删除成功');
+                message.success('编辑成功');
             }
         })
+    }
+
+     requestList = () =>{
+        let datas=[]
+        for (let i = 0; i < 20; i++) {
+          datas.push({
+            id: i,
+            teacherName: `货品${i}`,
+            Seniority: Math.floor(10*Math.random()+1),
+            grade: Math.floor(1000*Math.random()+1),
+          });
+        }
+        return datas
     }
     render(){
         const columns = [
             {
-                title:'Id',
+                title:'商品编码',
                 dataIndex:'id'
             },
             {
-                title:'姓名',
+                title:'货品名称',
                 dataIndex:'teacherName'
             },
             {
-                title:'年龄',
+                title:'货品数量',
                 dataIndex:'Seniority'
             },
             {
-                title:'性别',
+                title:'单价',
                 dataIndex:'grade',
-                render(grade){
-                    const config = {
-                        '1':'男',
-                        '2':'女',
-                        '3':'女娇娥'
-                    }
-                    return config[grade]
-                }
+               
             },
             {
                 title:'操作',
-                render:(item)=>{
-                    return <Button size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>删除</Button>
+                render:(item,record,index)=>{
+                    return <Space>
+                        <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>编辑</a>
+                        
+                    </Space>
                 }
             }
         ];
@@ -118,7 +120,7 @@ class FormList extends React.Component{
                 <Card>
                     <Etable
                         that={this}
-                        dataSource={this.state.dataSource}
+                        dataSource={this.requestList()}
                         columns={columns}
                         pagination={this.state.pagination}
                         rowSelection={this.state.rowSelection}

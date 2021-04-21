@@ -14,62 +14,60 @@ const { Header, Content, Footer, Sider } = Layout
 class User extends React.Component {
     state = {
         collapsed: false,
-        list:[123]
+        list: [123]
     };
 
     onCollapse = collapsed => {
         this.setState({ collapsed });
     };
 
-    getBreadList = (path)=>{
+    getBreadList = (path) => {
         const pathList = path.slice(1).split("/")
-        return pathList.map((item,index) => {
+        return pathList.map((item, index) => {
             return {
-                name:item,
-                path:index>0?`/${pathList[index-1]}/${item}`:`/${item}`
+                name: item,
+                path: index > 0 ? `/${pathList[index - 1]}/${item}` : `/${item}`
             }
         })
     }
-    logOut = ()=> {
-        const {dispatch,authChangeAction} = this.props
+    logOut = () => {
+        const { dispatch, authChangeAction } = this.props
         localStorage.removeItem('authed')
         dispatch(authChangeAction(null))
     }
-   
-    componentDidMount(){
+
+    componentDidMount() {
         const path = this.props.location.pathname
-        const {dispatch,permissionAction} = this.props
+        const { dispatch, permissionAction } = this.props
         let authed = this.props.state.authed || localStorage.getItem('authed') // 如果登陆之后可以利用redux修改该值
-        if(authed && this.props.state.permissionList.length === 1){
+        if (authed && this.props.state.permissionList.length === 1) {
             dispatch(permissionAction(path))
         }
-        
-
     }
-    componentDidUpdate(prevProps, prevState){
-        
+    componentDidUpdate(prevProps, prevState) {
+
     }
     shouldComponentUpdate(nextProps, nextState) {
         return true
     }
     render() {
         //默认进入子组件index
-        if(this.props.location.pathname === '/user'){
+        if (this.props.location.pathname === '/user') {
             return (
-                <Redirect path="/user"  exact={true} to={{pathname: '/user/index'}} />
+                <Redirect path="/user" exact={true} to={{ pathname: '/user/index' }} />
             )
         }
-        
+
         const { permissionList, name } = this.props.state
         const path = this.props.location.pathname
         const defaultOpenKeys = filterRoutes(path)
-        
-        const breadList = recursionRouterTwo(defaultOpenKeys,permissionList)
+        const breadList = recursionRouterTwo(defaultOpenKeys, permissionList)
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-                    <div className="logo" />
-                    
+                    <div className="logo" style={{fontSize:'22px',color:'#fff',textAlign:'center',lineHeight:'32px'}} >
+                    </div>
+
                     <Menu onClick={this.menuClick} theme="dark" defaultOpenKeys={defaultOpenKeys} selectedKeys={[path]} mode="inline">
                         {
                             getMenuItem(permissionList)
@@ -91,21 +89,21 @@ class User extends React.Component {
                             }
                         </Breadcrumb>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                        <Switch>
-                            {permissionList.map((value, key) => {
-                                return (
-                                    <Route
-                                        routes={value}
-                                        key={key}
-                                        exact={value.exact ? true : false}
-                                        path={value.path}
-                                        component={value.component}
-                                        list={this.state.list}
-                                    />
-                                );
-                            })}
-                            <Route component={NotFound}/> 
-                        </Switch>
+                            <Switch>
+                                {permissionList.map((value, key) => {
+                                    return (
+                                        <Route
+                                            routes={value}
+                                            key={key}
+                                            exact={value.exact ? true : false}
+                                            path={value.path}
+                                            component={value.component}
+                                            list={this.state.list}
+                                        />
+                                    );
+                                })}
+                                <Route component={NotFound} />
+                            </Switch>
                         </div>
                     </Content>
                 </Layout>
