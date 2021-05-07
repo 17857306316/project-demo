@@ -2,7 +2,6 @@ import Index from './pages/User/Home'
 import GoodsList from './pages/User/Goods/GoodsList'
 import GoodsClassify from './pages/User/Goods/GoodsClassify'
 import UserManage from './pages/User/Permission/UserManage'
-import RoleManage from './pages/User/Permission/RoleManage'
 import MenuManage from './pages/User/Permission/MenuManage'
 import OrderList from './pages/User/OrderManage/OrderList'
 import ReturnGoods from './pages/User/OrderManage/ReturnGoods'
@@ -127,13 +126,6 @@ const routes = [
                         name: '用户管理',
                         icon: 'table'
                     },
-                    // {
-                    //     path: '/user/permission/role',
-                    //     pathName: 'role-manage',
-                    //     component: RoleManage,
-                    //     name: '角色管理',
-                    //     icon: 'eye'
-                    // },
                     {
                         path: '/user/permission/menu',
                         pathName: 'menu-manage',

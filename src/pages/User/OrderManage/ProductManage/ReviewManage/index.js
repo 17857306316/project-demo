@@ -28,7 +28,7 @@ export default class ReviewManage extends React.Component{
             label:'货品编码',
             placeholder:'请输入货品编码',
             field:'username',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'input',
@@ -36,15 +36,15 @@ export default class ReviewManage extends React.Component{
             label:'货品名称',
             placeholder:'请输入货品名称',
             field:'password',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'select',
             initialValue:'',
-            label:'订单状态',
+            label:'审核状态',
             field:'siteName',
-            width:'100px',
-            list:[{id:0,label:'全部',value:''},{id:1,label:'已发货',value:'1'},{id:2,label:'待发货',value:'2'},{id:3,label:'待审核',value:'3'}]
+            width:'150px',
+            list:[{id:0,label:'全部',value:''},{id:1,label:'已审核',value:'1'},{id:2,label:'待审核',value:'2'},{id:3,label:'已作废',value:'3'}]
         },
         {
             type:'chooseTime',
@@ -75,7 +75,7 @@ export default class ReviewManage extends React.Component{
         e.stopPropagation()//阻止冒泡
         Modal.confirm({
             title:'确认',
-            content:'您确认要编辑此条数据吗？',
+            content:'您确认要审核此条数据吗？',
             onOk:()=>{
                 message.success('编辑成功');
             }
@@ -126,7 +126,7 @@ export default class ReviewManage extends React.Component{
                 title:'操作',
                 render:(item,record,index)=>{
                     return <Space>
-                        <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>编辑</a>
+                        <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>审核</a>
                         
                     </Space>
                 }
@@ -137,7 +137,11 @@ export default class ReviewManage extends React.Component{
                 <Card style={{margin:'20px 0'}}>
                     <FormCollection data={this.data} handleSearch={this.handleSearch}></FormCollection>
                 </Card>
+                
                 <Card>
+                <Button type='primary' style={{margin:10,float:'right'}}>
+                    批量审核
+                </Button>
                     <Etable
                         that={this}
                         dataSource={this.requestList()}

@@ -1,16 +1,4 @@
-// import React from 'react'
 
-// export default class GoodsList extends React.Component{
-
-//     render(){
-//         return (
-//             <div>GoodsList</div>
-//         )
-//     }
-// }
-
-
-// import NewTable from '@/common/BaseForm/NewTable';
 import React,{ Fragment } from 'react'
 import { Card,Button,Modal,message,Space } from 'antd'
 import FormCollection from '@/common/BaseForm'
@@ -30,7 +18,7 @@ export default class GoodsList extends React.Component{
             label:'货品编码',
             placeholder:'请输入货品编码',
             field:'username',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'input',
@@ -38,14 +26,14 @@ export default class GoodsList extends React.Component{
             label:'货品名称',
             placeholder:'请输入货品名称',
             field:'password',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'select',
             initialValue:'',
             label:'订单状态',
             field:'siteName',
-            width:'100px',
+            width:'150px',
             list:[{id:0,label:'全部',value:''},{id:1,label:'已发货',value:'1'},{id:2,label:'待发货',value:'2'},{id:3,label:'待审核',value:'3'}]
         },
         {

@@ -19,7 +19,7 @@ export default class GoodsClassify extends React.Component{
             label:'货品编码',
             placeholder:'请输入货品编码',
             field:'username',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'input',
@@ -27,14 +27,14 @@ export default class GoodsClassify extends React.Component{
             label:'货品名称',
             placeholder:'请输入货品名称',
             field:'password',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'select',
             initialValue:'',
             label:'订单状态',
             field:'siteName',
-            width:'100px',
+            width:'150px',
             list:[{id:0,label:'全部',value:''},{id:1,label:'已发货',value:'1'},{id:2,label:'待发货',value:'2'},{id:3,label:'待审核',value:'3'}]
         },
         {

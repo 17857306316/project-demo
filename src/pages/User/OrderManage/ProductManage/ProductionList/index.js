@@ -19,7 +19,7 @@ export default class ProductionList extends React.Component{
             label:'货品编码',
             placeholder:'请输入货品编码',
             field:'username',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'input',
@@ -27,14 +27,14 @@ export default class ProductionList extends React.Component{
             label:'货品名称',
             placeholder:'请输入货品名称',
             field:'password',
-            width:'120px'
+            width:'150px'
         },
         {
             type:'select',
             initialValue:'',
             label:'订单状态',
             field:'siteName',
-            width:'100px',
+            width:'150px',
             list:[{id:0,label:'全部',value:''},{id:1,label:'已发货',value:'1'},{id:2,label:'待发货',value:'2'},{id:3,label:'待审核',value:'3'}]
         },
         {
@@ -118,6 +118,7 @@ export default class ProductionList extends React.Component{
                 render:(item,record,index)=>{
                     return <Space>
                         <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>编辑</a>
+                        <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>删除</a>
                         
                     </Space>
                 }
@@ -128,7 +129,11 @@ export default class ProductionList extends React.Component{
                 <Card style={{margin:'20px 0'}}>
                     <FormCollection data={this.data} handleSearch={this.handleSearch}></FormCollection>
                 </Card>
+               
                 <Card>
+                <Button type='primary' style={{margin:'10px',float:'right'}}>
+                    新增
+                </Button>
                     <Etable
                         that={this}
                         dataSource={this.requestList()}
