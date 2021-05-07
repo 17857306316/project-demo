@@ -127,13 +127,13 @@ const routes = [
                         name: '用户管理',
                         icon: 'table'
                     },
-                    {
-                        path: '/user/permission/role',
-                        pathName: 'role-manage',
-                        component: RoleManage,
-                        name: '角色管理',
-                        icon: 'eye'
-                    },
+                    // {
+                    //     path: '/user/permission/role',
+                    //     pathName: 'role-manage',
+                    //     component: RoleManage,
+                    //     name: '角色管理',
+                    //     icon: 'eye'
+                    // },
                     {
                         path: '/user/permission/menu',
                         pathName: 'menu-manage',
