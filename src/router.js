@@ -12,9 +12,7 @@ import AsyncComponent from './utils/asyncComponent'
 const Home = AsyncComponent(() => import('./pages/Home'))
 const Login = AsyncComponent(() => import('./pages/Login'))
 const User = AsyncComponent(() => import('./pages/User'))
-
 const NotFound = AsyncComponent(() => import('./pages/NotFound'))
-
 const SecondLevelComponent = AsyncComponent(() => import('./common/SecondLevelComponent'))
 const ThirdLevelComponent = AsyncComponent(() => import('./common/ThirdLevelComponent'))
 
@@ -25,6 +23,7 @@ const routes = [
         component: Home,
         requiresAuth: false
     },
+    
     {
         path: '/login',
         component: Login,

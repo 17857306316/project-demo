@@ -43,7 +43,9 @@ export const authChangeAction = (token) =>{
 }
 
 export const permissionAction = (path) =>{
+    console.log(path);
     return (dispatch) =>{
+        console.log(dispatch);
         request({
             url: '/user/info',
             method: 'get',

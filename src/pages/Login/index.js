@@ -19,6 +19,7 @@ class NormalLoginForm extends React.Component {
             this.authChange(values)
         })
 
+        
     }
     authChange = (values) => {
         const { dispatch, authChangeAction } = this.props
@@ -40,7 +41,6 @@ class NormalLoginForm extends React.Component {
                     ref={this.formRef}
                     className="login-form login-form-login">
                     <div className="login-title">后台管理系统</div>
-
                     <Form.Item name='username' rules={[{ required: true, message: "请输入你的用户名" }]}>
                         <Input placeholder='username' prefix={<UserOutlined />}></Input>
                     </Form.Item>
