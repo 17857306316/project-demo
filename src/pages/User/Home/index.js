@@ -4,7 +4,6 @@ import { UserOutlined } from '@ant-design/icons';
 import * as echarts from 'echarts';
 
 export default function Home() {
-
     useEffect(() => {
         getEcharts()
     }, [])
@@ -37,9 +36,10 @@ export default function Home() {
             }]
         });
     }
+
     return (
         <div style={{ background: '#f0f2f5' }}>
-            <Card title="工作台" style={{marginBottom:10}}>
+            <Card title="工作台" style={{ marginBottom: 10 }}>
                 <div style={{ display: 'flex' }}>
                     <Avatar src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" size={64} icon={<UserOutlined />} />
                     <div style={{ marginLeft: 10 }}>
@@ -49,8 +49,8 @@ export default function Home() {
                 </div>
             </Card >
             <Card title='订单完成数'>
-            <div id='main' style={{ width: '100%', height: 400 }}>
-            </div>
+                <div id='main' style={{ width: '100%', height: 400 }}>
+                </div>
             </Card>
         </div>
     )

@@ -51,6 +51,7 @@ class User extends React.Component {
         return true
     }
     render() {
+        console.log(this.props);
         //默认进入子组件index
         if (this.props.location.pathname === '/user') {
             return (

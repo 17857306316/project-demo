@@ -1,10 +1,161 @@
-import React from 'react'
+// import React from 'react'
+
+// export default class ReviewManage extends React.Component{
+
+//     render(){
+//         return (
+//             <div>ReviewManage</div>
+//         )
+//     }
+// }
+
+import React,{ Fragment } from 'react'
+import { Card,Button,Modal,message,Space } from 'antd'
+import FormCollection from '../../../../../common/BaseForm'
+import Etable from '../../../../../common/Etable'
+import { updateSelectedItem, getList } from '../../../../../utils'
 
 export default class ReviewManage extends React.Component{
+    
+    params = {
+        page:1,
+        pageSize:5
+    }
+    data = [
+        {
+            type:'input',
+            initialValue:'',
+            label:'货品编码',
+            placeholder:'请输入货品编码',
+            field:'username',
+            width:'150px'
+        },
+        {
+            type:'input',
+            initialValue:'',
+            label:'货品名称',
+            placeholder:'请输入货品名称',
+            field:'password',
+            width:'150px'
+        },
+        {
+            type:'select',
+            initialValue:'',
+            label:'审核状态',
+            field:'siteName',
+            width:'150px',
+            list:[{id:0,label:'全部',value:''},{id:1,label:'已审核',value:'1'},{id:2,label:'待审核',value:'2'},{id:3,label:'已作废',value:'3'}]
+        },
+        {
+            type:'chooseTime',
+            label:'订单时间'
+        }
+    ]
+   
 
+    state = {
+        pagination:true,
+        rowSelection:{
+            selectedRowKeys:[],
+            selectedRows:[]
+        }
+    }
+
+    componentDidMount(){
+        this.requestList()
+    }
+
+ 
+   
+    handleSearch = (data)=>{
+        console.log(this)
+    }
+    handleDelete = (item,e)=>{
+        console.log(e);
+        e.stopPropagation()//阻止冒泡
+        Modal.confirm({
+            title:'确认',
+            content:'您确认要审核此条数据吗？',
+            onOk:()=>{
+                message.success('编辑成功');
+            }
+        })
+    }
+
+     requestList = () =>{
+        let datas=[]
+        for (let i = 0; i < 20; i++) {
+          datas.push({
+            id: i,
+            teacherName: `货品${i}`,
+            Seniority: Math.floor(10*Math.random()+1),
+            grade: Math.floor(1000*Math.random()+1),
+            remark:'备注',
+            time:'2021-4-21 15:42'
+          });
+        }
+        return datas
+    }
     render(){
+        const columns = [
+            {
+                title:'物品名称',
+                dataIndex:'id'
+            },
+            {
+                title:'货品名称',
+                dataIndex:'teacherName'
+            },
+            {
+                title:'申购数量',
+                dataIndex:'Seniority'
+            },
+            {
+                title:'单价',
+                dataIndex:'grade',
+            },
+            {
+                title:'备注',
+                dataIndex:'remark'
+            },
+            {
+                title:'采购日期',
+                dataIndex:'time',
+            },
+            {
+                title:'操作',
+                render:(item,record,index)=>{
+                    return <Space>
+                        <a size="small" type="primary" onClick={ (e)=>{this.handleDelete(item,e)} }>审核</a>
+                        
+                    </Space>
+                }
+            }
+        ];
         return (
-            <div>ReviewManage</div>
+            <Fragment>
+                <Card style={{margin:'20px 0'}}>
+                    <FormCollection data={this.data} handleSearch={this.handleSearch}></FormCollection>
+                </Card>
+                
+                <Card>
+                <Button type='primary' style={{margin:10,float:'right'}}>
+                    批量审核
+                </Button>
+                    <Etable
+                        that={this}
+                        dataSource={this.requestList()}
+                        columns={columns}
+                        pagination={this.state.pagination}
+                        rowSelection={this.state.rowSelection}
+                        updateSelectedItem={updateSelectedItem.bind(this)}
+                    />
+                </Card>
+                
+            </Fragment>
+            
+
         )
     }
 }
+
