@@ -3,17 +3,19 @@ import GoodsList from './pages/User/Goods/GoodsList'
 import GoodsClassify from './pages/User/Goods/GoodsClassify'
 import UserManage from './pages/User/Permission/UserManage'
 import MenuManage from './pages/User/Permission/MenuManage'
-import OrderList from './pages/User/OrderManage/OrderList'
+// import OrderList from './pages/User/OrderManage/OrderList'
 import ReturnGoods from './pages/User/OrderManage/ReturnGoods'
 import ProductionList from './pages/User/OrderManage/ProductManage/ProductionList'
 import ReviewManage from './pages/User/OrderManage/ProductManage/ReviewManage'
 import AsyncComponent from './utils/asyncComponent'
-const Home = AsyncComponent(() => import('./pages/Home'))
-const Login = AsyncComponent(() => import('./pages/Login'))
-const User = AsyncComponent(() => import('./pages/User'))
-const NotFound = AsyncComponent(() => import('./pages/NotFound'))
-const SecondLevelComponent = AsyncComponent(() => import('./common/SecondLevelComponent'))
-const ThirdLevelComponent = AsyncComponent(() => import('./common/ThirdLevelComponent'))
+import Loadable from './utils/loadable'
+const OrderList =AsyncComponent(()=>import('./pages/User/OrderManage/OrderList'))
+const Home = Loadable(() => import('./pages/Home'))
+const Login = Loadable(() => import('./pages/Login'))
+const User = Loadable(() => import('./pages/User'))
+const NotFound = Loadable(() => import('./pages/NotFound'))
+const SecondLevelComponent = Loadable(() => import('./common/SecondLevelComponent'))
+const ThirdLevelComponent = Loadable(() => import('./common/ThirdLevelComponent'))
 
 const routes = [
     {
@@ -39,7 +41,7 @@ const routes = [
                 pathName: 'index',
                 component: Index,
                 name: '首页',
-                icon: 'pie-chart'
+                icon: 'pie-chart',
             },
             {
                 path: '/user/order',

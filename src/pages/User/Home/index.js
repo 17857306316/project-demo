@@ -1,57 +1,164 @@
-import React, { useEffect } from 'react'
-import { Card, Avatar } from 'antd'
-import { UserOutlined } from '@ant-design/icons';
-import * as echarts from 'echarts';
+import React, { useEffect } from "react";
+import { Card, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import * as echarts from "echarts";
 
 export default function Home() {
-    useEffect(() => {
-        getEcharts()
-    }, [])
+  useEffect(() => {
+    getEcharts();
+    getEcharts1();
+  }, []);
 
-    function getEcharts() {
-        var myChart = echarts.init(document.getElementById('main'));
-        myChart.setOption({
-            tooltip: {
-                trigger: 'axis'
+  function getEcharts1() {
+    let myChart = echarts.init(document.getElementById("bar"));
+    myChart.setOption({
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          // 坐标轴指示器，坐标轴触发有效
+          type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+        },
+      },
+      legend: {
+        data: [
+          "直接访问",
+          "邮件营销",
+          "联盟广告",
+          "视频广告",
+          "搜索引擎",
+          "百度",
+          "谷歌",
+          "必应",
+          "其他",
+        ],
+      },
+      grid: {
+        left: "3%",
+        right: "4%",
+        bottom: "3%",
+        containLabel: true,
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+        },
+      ],
+      series: [
+        {
+          name: "直接访问",
+          type: "bar",
+          data: [320, 332, 301, 334, 390, 330, 320],
+        },
+        {
+          name: "邮件营销",
+          type: "bar",
+          stack: "广告",
+          data: [120, 132, 101, 134, 90, 230, 210],
+        },
+        {
+          name: "联盟广告",
+          type: "bar",
+          stack: "广告",
+          data: [220, 182, 191, 234, 290, 330, 310],
+        },
+        {
+          name: "视频广告",
+          type: "bar",
+          stack: "广告",
+          data: [150, 232, 201, 154, 190, 330, 410],
+        },
+        {
+          name: "搜索引擎",
+          type: "bar",
+          data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+          markLine: {
+            lineStyle: {
+              normal: {
+                type: "dashed",
+              },
             },
-            yAxis: {
-                type: 'value'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-            },
-            series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line',
-                smooth: true,
-                name: '订单完成情况',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'top'
-                    }
-                },
-            }]
-        });
-    }
+            data: [[{ type: "min" }, { type: "max" }]],
+          },
+        },
+        {
+          name: "百度",
+          type: "bar",
+          barWidth: 5,
+          stack: "搜索引擎",
+          data: [620, 732, 701, 734, 1090, 1130, 1120],
+        },
+        {
+          name: "谷歌",
+          type: "bar",
+          stack: "搜索引擎",
+          data: [120, 132, 101, 134, 290, 230, 220],
+        },
+        {
+          name: "必应",
+          type: "bar",
+          stack: "搜索引擎",
+          data: [60, 72, 71, 74, 190, 130, 110],
+        },
+        {
+          name: "其他",
+          type: "bar",
+          stack: "搜索引擎",
+          data: [62, 82, 91, 84, 109, 110, 120],
+        },
+      ],
+    });
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
 
-    return (
-        <div style={{ background: '#f0f2f5' }}>
-            <Card title="工作台" style={{ marginBottom: 10 }}>
-                <div style={{ display: 'flex' }}>
-                    <Avatar src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" size={64} icon={<UserOutlined />} />
-                    <div style={{ marginLeft: 10 }}>
-                        <div style={{ fontSize: '16px' }}>你好，<strong>admin</strong>祝你开心每一天!</div>
-                        <div style={{ opacity: '0.5', marginTop: 10 }} > 管理员</div>
-                    </div>
-                </div>
-            </Card >
-            <Card title='订单完成数'>
-                <div id='main' style={{ width: '100%', height: 400 }}>
-                </div>
-            </Card>
-        </div>
-    )
+  function getEcharts() {
+    var myChart = echarts.init(document.getElementById("main"));
+    myChart.setOption({
+      tooltip: {
+        trigger: "axis",
+      },
+      yAxis: {
+        type: "value",
+      },
+      xAxis: {
+        type: "category",
+        boundaryGap: false,
+        data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: "line",
+          smooth: true,
+          name: "订单完成情况",
+          label: {
+            normal: {
+              show: true,
+              position: "top",
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  return (
+    <div style={{ background: "#f0f2f5" }}>
+      <Card title="可视化展示">
+        <div
+          id="bar"
+          style={{ height: 300, width: "90%", background: "#fff" }}
+        ></div>
+
+        <div id="main" style={{ width: "90%", height: 400 }}></div>
+      </Card>
+    </div>
+  );
 }

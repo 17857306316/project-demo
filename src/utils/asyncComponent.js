@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Spin } from "antd";
-
 const asyncComponent = importComponent => {
     return class extends Component {
         constructor() {
@@ -11,6 +10,7 @@ const asyncComponent = importComponent => {
         }
         componentDidMount() {
             importComponent().then(cmp => {
+                console.log(cmp);
                 this.setState({ component: cmp.default });
             });
         }
